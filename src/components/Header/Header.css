@@ -18,6 +18,10 @@
   color: #195176;
 }
 
+.header__nav a{
+  text-decoration: none;
+}
+
 .header__nav ul{
   display: flex;
   padding: 0;

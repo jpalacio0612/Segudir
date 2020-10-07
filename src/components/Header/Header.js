@@ -1,35 +1,41 @@
 import React from 'react'
 import './Header.css'
 import segudirLogo from '../../assets/segudir.png'
+import { Link } from 'react-router-dom'
+
 
 export const Header = () => {
   return (
     <div className="header">
       <div className="header__nav">
-        <img src={segudirLogo} alt="Logo segudir"/>
-        <span>SEGUDIR</span>
+        <Link to="/">
+         <img src={segudirLogo} alt="Logo segudir"/>
+        </Link>
+        <Link to="/">
+          <span>SEGUDIR</span>
+        </Link>        
         <ul>
           <li>
-            <a href="/">Cursos</a>
+            <Link href="/">Cursos</Link>
           </li>
           <li>
-            <a href="/">Precios</a>
+            <Link href="/">Precios</Link>
           </li>
           <li>
-            <a href="/">Blog</a>
+            <Link href="/">Blog</Link>
           </li>
           <li>
-            <a href="/">¿Quieres ser un mentor?</a>
+            <Link href="/">¿Quieres ser un mentor?</Link>
           </li>
         </ul>
       </div>
       <div className="header__sign">
         <ul>
           <li>
-            <a href="/">Ingresar</a>
+            <Link to="/signin">Ingresar</Link>
           </li>
           <li>
-            <a href="/">Registrate</a>
+            <Link to="/signup">Registrate</Link>
           </li>
         </ul>
       </div>
