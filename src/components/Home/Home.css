@@ -1,0 +1,93 @@
+.hero{
+  height: 391px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.hero__left{
+  text-align: left;
+}
+
+.hero__left h1{
+  color: #195176;
+  text-align: left;
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.hero__left p{
+  margin: 0;
+  color: #8B8B8B;
+  text-align: left;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.hero__left button{
+  margin-top: 20px;
+  background-color: #18B6F0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  height: 46px;
+  width: 359px;
+  font-size: 25px;
+  transition: 100ms;
+}
+
+
+.hero__left button:hover{
+  cursor: pointer;
+  background-color: #195176;  
+}
+
+.hero__right img{
+  max-width: 540px;
+}
+
+.carousel {
+  height: 300px;
+  width: 100%;
+  position: relative;
+  background-color: #6DCFF6;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.carousel span{
+  color: white;
+  font-weight: 900;
+  align-self: flex-start;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+
+
+
+.carousel__item {
+  background-color: #C7EAFB;
+  width: 250px;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-right: 30px;
+  display: inline-block;
+  cursor: pointer;
+  transition: 450ms all;
+  transform-origin: center left;
+}
+
+.carousel__item:hover ~ .carousel__item {
+  transform: translate3d(50px, 0, 0);
+}
+
+.carousel__container:hover ~ .carousel__item {
+  opacity: 0.3;
+}
+
+.carousel__container:hover .carousel__item:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
