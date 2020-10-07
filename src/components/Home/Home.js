@@ -7,8 +7,8 @@ export const Home = () => {
     <div className="home">
       <div className="hero">
         <div className="hero__left">
-          <h1>Cursos online <br/> Seguridad Electronica</h1>
-          <p>Inicia sin limites y tu trabajo sera mejor <br/> mañana</p>
+          <h1>Cursos online <br/> Seguridad Electrónica</h1>
+          <p>Inicia sin límites y tu trabajo será mejor <br/> mañana</p>
           <button>Comienza ahora</button>
         </div>
         <div className="hero__right">
@@ -16,7 +16,7 @@ export const Home = () => {
         </div>
       </div>
       <section class="carousel">
-        <span>Ultimos Cursos</span>
+        <span>Últimos Cursos</span>
       <div class="carousel__container">
         <div class="carousel__item">
           
