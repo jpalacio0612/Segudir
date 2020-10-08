@@ -94,7 +94,7 @@
 
 @media screen and (max-width: 1023px){
   .header__sign{
-    /* display: none; */
+    justify-content: center;
   }
 }
 

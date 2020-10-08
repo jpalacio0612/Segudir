@@ -8,7 +8,7 @@ export const Home = () => {
       <div className="hero">
         <div className="hero__left">
           <h1>Cursos online <br/> Seguridad Electrónica</h1>
-          <p>Inicia sin límites y tu trabajo será mejor <br/> mañana</p>
+          <p>Inicia sin límites y tu trabajo será mejor mañana</p>
           <button>Comienza ahora</button>
         </div>
         <div className="hero__right">

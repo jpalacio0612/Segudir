@@ -23,6 +23,7 @@
   text-align: left;
   font-weight: 900;
   font-size: 24px;
+  width: 400px;
 }
 
 .hero__left button{
@@ -88,6 +89,7 @@
 @media screen and (max-width: 1023px){
   .hero{
     height: auto;
+    width: 100vw;
   }
 
   .carousel{
@@ -123,4 +125,26 @@
     column-gap: 10px;
     row-gap: 15px;
   }
+
+  .hero__left button{
+    width: 80%;
+  }
 }
+
+
+@media screen and (max-width: 480px){
+  .hero__left h1{
+    font-size: 30px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .hero__left p {
+    font-size: 25px;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+

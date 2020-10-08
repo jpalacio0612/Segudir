@@ -30,7 +30,7 @@
 
 .signup__form form input{
   box-sizing: border-box;
-  width: 377px;
+  width: 90%;
   height: 47px;
   border-radius: 5px;
   border: 1px solid rgba(139, 139, 139, 0.5);
@@ -50,7 +50,7 @@
   background-color: #18B6F0;
   border: none;
   color: white;
-  width: 377px;
+  width: 90%;
   height: 47px;
   border-radius: 5px;
   margin: 10px auto;
@@ -79,7 +79,7 @@
   background-color: #18B6F0;
   border: none;
   color: white;
-  width: 377px;
+  width: 90%;
   height: 47px;
   border-radius: 5px;
   margin: 10px auto;
