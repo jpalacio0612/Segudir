@@ -16,23 +16,22 @@ export const Home = () => {
         </div>
       </div>
       <section class="carousel">
-        <span>Últimos Cursos</span>
-      <div class="carousel__container">
-        <div class="carousel__item">
+        <div class="carousel__container">
+          <div class="carousel__item">
+            
+          </div>
+          <div class="carousel__item">
+          
+          </div>
+          <div class="carousel__item">
+        
+          </div>
+          <div class="carousel__item">
+            
+          </div>
           
         </div>
-        <div class="carousel__item">
-        
-        </div>
-        <div class="carousel__item">
-       
-        </div>
-        <div class="carousel__item">
-          
-        </div>
-        
-      </div>
-    </section>
+      </section>
     </div>
   )
 }

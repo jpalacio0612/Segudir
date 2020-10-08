@@ -1,6 +1,7 @@
 .hero{
   height: 391px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -49,16 +50,16 @@
 .carousel {
   height: 300px;
   width: 100%;
-  position: relative;
   background-color: #6DCFF6;
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
 .carousel__container{
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  column-gap: 10px;
 }
 
 .carousel span{
@@ -73,26 +74,53 @@
 
 .carousel__item {
   background-color: #C7EAFB;
-  width: 250px;
+  width: 200px;
   height: 200px;
   border-radius: 20px;
-  overflow: hidden;
-  margin-right: 30px;
   display: inline-block;
   cursor: pointer;
-  transition: 450ms all;
-  transform-origin: center left;
 }
 
-.carousel__item:hover ~ .carousel__item {
-  transform: translate3d(50px, 0, 0);
+
+
+
+
+@media screen and (max-width: 1023px){
+  .hero{
+    height: auto;
+  }
+
+  .carousel{
+    height: auto;
+    padding: 20px;
+  }
+
+  .carousel__item{
+    width: auto;
+    height: auto;
+  }
+
+  .carousel__container{
+    grid-template-rows: 300px 300px; 
+    grid-template-columns: 300px 300px;
+    column-gap: 10px;
+    row-gap: 15px;
+  }
 }
 
-.carousel__container:hover ~ .carousel__item {
-  opacity: 0.3;
-}
 
-.carousel__container:hover .carousel__item:hover {
-  transform: scale(1.2);
-  opacity: 1;
+@media screen and (max-width: 766px){
+  .hero__right img{
+    max-width: 300px;
+  }
+  .hero__left {
+    text-align: center;
+  }
+  .carousel__container{
+    grid-template-rows:  none;
+    grid-template-rows:  300px 300px 300px 300px;
+    grid-template-columns: 300px;
+    column-gap: 10px;
+    row-gap: 15px;
+  }
 }
