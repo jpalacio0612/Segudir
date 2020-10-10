@@ -5,6 +5,7 @@ import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { SignUp } from "./components/SignUp/SignUp";
 import { SignIn } from "./components/SignIn/SignIn";
+import { Courses } from "./components/courses/Courses";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/courses" component={Courses} />
       </Switch>
     </Router>
   );

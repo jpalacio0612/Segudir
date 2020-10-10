@@ -1,0 +1,91 @@
+.courses {
+  background-color: #c7eafb;
+  height: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.courses__grid {
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.course {
+  margin: 10px auto;
+  width: 240px;
+  height: 280px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+}
+
+.course__top {
+  height: 50%;
+  background-image: url(https://www.itsitio.com/wp-content/uploads/2020/04/hikvsion-thermal-camera-780x405.jpg);
+  background-size: cover;
+  border-radius: 10px 10px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course__top img {
+  width: 50px;
+}
+
+.course__bottom {
+  height: 50%;
+  padding: 8px;
+}
+
+.course__bottom h2 {
+  font-size: 20px;
+  color: #195176;
+  margin: 0;
+}
+
+.course__bottom p {
+  margin: 10px 0;
+  font-size: 10px;
+  color: #5b6b73;
+}
+
+.course__bottom--rating {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.course__bottom--rating img {
+  width: 20px;
+  margin-left: 14px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 1439px) {
+  .courses__grid {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .courses__grid {
+    margin: 0 auto;
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .courses__grid {
+    margin: 0 auto;
+    grid-template-columns: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+}
+
+@media screen and (max-width: 320px) {
+}
