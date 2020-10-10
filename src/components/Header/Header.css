@@ -1,12 +1,13 @@
-.header{
+.header {
   display: flex;
   flex-wrap: wrap;
   height: 70px;
   justify-content: space-between;
-  box-shadow: 0px 0px 9px 3px rgba(41,41,41,.25)
+  box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+  position: relative;
 }
 
-.header__container{
+.header__container {
   max-width: 1000px;
   flex: 1;
   margin: 0 auto;
@@ -17,28 +18,28 @@
   flex-wrap: inherit;
 }
 
-.header__nav{
+.header__nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.header__logo{
+.header__logo {
   display: flex;
   align-items: center;
 }
 
-.header__logo span{
+.header__logo span {
   font-size: 36px;
   font-weight: 900;
   color: #195176;
 }
 
-.header__logo a{
+.header__logo a {
   text-decoration: none;
 }
 
-.header__nav ul{
+.header__nav ul {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
@@ -53,24 +54,24 @@
   text-decoration: underline;
 }
 
-.header__nav ul li a{
+.header__nav ul li a {
   text-decoration: none;
-  color: #8B8B8B;
+  color: #8b8b8b;
   font-size: 18px;
   font-weight: bold;
 }
 
-.header__nav img{
+.header__nav img {
   object-fit: contain;
   width: 68px;
 }
 
-.header__sign{
+.header__sign {
   display: flex;
   align-items: center;
 }
 
-.header__sign ul{
+.header__sign ul {
   display: flex;
   padding: 0;
 }
@@ -84,52 +85,45 @@
   text-decoration: underline;
 }
 
-.header__sign ul li a{
+.header__sign ul li a {
   text-decoration: none;
-  color: #8B8B8B;
+  color: #8b8b8b;
   font-size: 18px;
   font-weight: bold;
 }
 
-
-@media screen and (max-width: 1023px){
-  .header__sign{
+@media screen and (max-width: 1023px) {
+  .header__sign {
     justify-content: center;
   }
 }
 
-
-@media screen and (max-width: 766px){
-  .header{
+@media screen and (max-width: 766px) {
+  .header {
     display: block;
     height: auto;
   }
-  
-  .header__nav{
+
+  .header__nav {
     display: block;
   }
 
-  .header__nav ul{
+  .header__nav ul {
     display: block;
   }
-  .header__nav ul li{
+  .header__nav ul li {
     height: 50px;
     text-align: center;
     margin: 0;
   }
 
-  .header__logo{
+  .header__logo {
     justify-content: center;
   }
-  
 }
 
-
-@media screen and (max-width: 480px){
-
+@media screen and (max-width: 480px) {
 }
 
-
-@media screen and (max-width: 320px){
-
-} 
+@media screen and (max-width: 320px) {
+}

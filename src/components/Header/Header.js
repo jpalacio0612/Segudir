@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import segudirLogo from "../../assets/segudir.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "../../firebase";
 
 export const Header = () => {
+  const history = useHistory();
+  const [authUser, setAuthUser] = useState();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        setAuthUser(authUser);
+      } else {
+        setAuthUser();
+      }
+    });
+  }, [authUser]);
+
+  const logout = () => {
+    auth.signOut().then(history.push("/"));
+  };
+
   return (
     <div className="header">
       <div className="header__container">
@@ -40,6 +58,7 @@ export const Header = () => {
               <Link to="/signup">Registrate</Link>
             </li>
           </ul>
+          {authUser && <button onClick={logout}>Cerrar Sesión</button>}
         </div>
       </div>
     </div>

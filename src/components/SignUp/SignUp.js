@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import firebase, { firestore } from "firebase";
 import "./SignUp.css";
 import googleLogo from "../../assets/google_logo.png";
 import { auth, db } from "../../firebase";
@@ -7,19 +6,19 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Modal } from "../Modal/Modal";
 import succesfull from "../../assets/successful.gif";
+import { googleSign } from "../../utils/firebaseAPI";
 
 export const SignUp = () => {
   const { register, handleSubmit, errors, watch } = useForm();
   const [modelToggle, setModelToggle] = useState(false);
   const history = useHistory();
-  var provider = new firebase.auth.GoogleAuthProvider();
 
   const handleClose = () => {
     setModelToggle(false);
     history.push("/");
   };
 
-  const onSubmit = ({ name, lastname, email, password }) => {
+  const signUp = ({ name, lastname, email, password }) => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
@@ -41,61 +40,11 @@ export const SignUp = () => {
       .catch((error) => alert(error.message));
   };
 
-  function addNewUserToFirestore(user) {
-    const collection = db.collection("students");
-    const { profile } = user.additionalUserInfo;
-    const details = {
-      name: profile.given_name,
-      lastName: profile.family_name,
-      email: profile.email,
-      picture: profile.picture,
-      createdDtm: firestore.FieldValue.serverTimestamp(),
-      lastLoginTime: firestore.FieldValue.serverTimestamp(),
-    };
-    collection.doc(auth.currentUser.uid).set(details);
-  }
-
-  const googleSingIn = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((user) => {
-        console.log(user);
-        try {
-          const docRef = db.collection("students").doc(auth.currentUser.uid);
-          docRef
-            .get()
-            .then((doc) => {
-              if (doc.exists) {
-                const collection = db.collection("students");
-                collection.doc(auth.currentUser.uid).set(
-                  {
-                    lastLoginTime: firestore.FieldValue.serverTimestamp(),
-                  },
-                  { merge: true }
-                );
-                setModelToggle(true);
-              } else {
-                addNewUserToFirestore(user);
-                setModelToggle(true);
-              }
-            })
-            .catch((error) => {
-              console.error('Checking if customer exists failed" ' + error);
-            });
-        } catch (error) {
-          console.log("Something generic went wrong, ", error);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
   return (
     <div className="signup">
       <div className="signup__form">
         <h3>Crea tu cuenta</h3>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(signUp)}>
           <input
             name="name"
             placeholder="Nombres"
@@ -136,7 +85,7 @@ export const SignUp = () => {
           <button>Registrarse</button>
         </form>
         <div className="signup__google">
-          <button onClick={googleSingIn}>
+          <button onClick={() => googleSign(history)}>
             Registrate con <img src={googleLogo} alt="logo de google" />
           </button>
         </div>
