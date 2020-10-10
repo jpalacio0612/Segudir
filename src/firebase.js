@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from "firebase";
 
 const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyB-xRWhu7m8WdpZiZwvp6eUwFf_2-NoSQE",
@@ -8,11 +8,13 @@ const firebaseApp = firebase.initializeApp({
   storageBucket: "segudir.appspot.com",
   messagingSenderId: "981913502676",
   appId: "1:981913502676:web:084688593218333c2c0c41",
-  measurementId: "G-N0JCHSDBJV"
-})
+  measurementId: "G-N0JCHSDBJV",
+});
 
-const db = firebaseApp.firestore()
-const auth = firebase.auth()
-const storage = firebase.storage()
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+const storage = firebase.storage();
 
-export { db, auth, storage }
+db.settings({ timestampsInSnapshots: true });
+
+export { db, auth, storage };
