@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Header } from './components/Header/Header';
-import { Home } from './components/Home/Home';
-import { SignUp } from './components/SignUp/SignUp'
-import { SignIn } from './components/SignIn/SignIn';
-
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Header } from "./components/Header/Header";
+import { Home } from "./components/Home/Home";
+import { SignUp } from "./components/SignUp/SignUp";
+import { SignIn } from "./components/SignIn/SignIn";
 
 function App() {
   return (

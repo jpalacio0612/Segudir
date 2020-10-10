@@ -1,8 +1,7 @@
-import React from 'react'
-import './Header.css'
-import segudirLogo from '../../assets/segudir.png'
-import { Link } from 'react-router-dom'
-
+import React from "react";
+import "./Header.css";
+import segudirLogo from "../../assets/segudir.png";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -11,24 +10,24 @@ export const Header = () => {
         <div className="header__nav">
           <div className="header__logo">
             <Link to="/">
-            <img src={segudirLogo} alt="Logo segudir"/>
+              <img src={segudirLogo} alt="Logo segudir" />
             </Link>
             <Link to="/">
               <span>SEGUDIR</span>
-            </Link>        
+            </Link>
           </div>
           <ul>
             <li>
-              <Link href="/">Cursos</Link>
+              <Link to="/">Cursos</Link>
             </li>
             <li>
-              <Link href="/">Precios</Link>
+              <Link to="/">Precios</Link>
             </li>
             <li>
-              <Link href="/">Blog</Link>
+              <Link to="/">Blog</Link>
             </li>
             <li>
-              <Link href="/">¿Quieres ser un mentor?</Link>
+              <Link to="/">¿Quieres ser un mentor?</Link>
             </li>
           </ul>
         </div>
@@ -44,5 +43,5 @@ export const Header = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

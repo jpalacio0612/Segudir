@@ -1,17 +1,44 @@
-import React from 'react'
-import googleLogo from '../../assets/google_logo.png'
-import './SignIn.css'
+import { auth } from "../../firebase";
+import React from "react";
+import { useForm } from "react-hook-form";
+import googleLogo from "../../assets/google_logo.png";
+import "./SignIn.css";
 
 export const SignIn = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = ({ email, password }) => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log("Logeo Existoso");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="signin">
       <div className="signin__form">
         <div className="signin__google">
-          <button> Inicia sesión con <img src={googleLogo} alt="logo de google"/> </button>
+          <button>
+            Inicia sesión con <img src={googleLogo} alt="logo de google" />{" "}
+          </button>
         </div>
-        <form>
-          <input placeholder="Correo electrónico"/>
-          <input placeholder="Contraseña"/>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            placeholder="Correo electrónico"
+            type="text"
+            name="email"
+            ref={register({ required: true })}
+          />
+          <input
+            placeholder="Contraseña"
+            type="password"
+            name="password"
+            ref={register({ required: true })}
+          />
           <button>Iniciar sesión</button>
           <p>¿Olvidaste tu contraseña?</p>
         </form>
@@ -21,5 +48,5 @@ export const SignIn = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
