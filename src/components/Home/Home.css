@@ -1,4 +1,10 @@
-.hero{
+.home {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.hero {
   height: 391px;
   display: flex;
   flex-wrap: wrap;
@@ -6,29 +12,29 @@
   align-items: center;
 }
 
-.hero__left{
+.hero__left {
   text-align: left;
 }
 
-.hero__left h1{
+.hero__left h1 {
   color: #195176;
   text-align: left;
   font-weight: 900;
   font-size: 40px;
 }
 
-.hero__left p{
+.hero__left p {
   margin: 0;
-  color: #8B8B8B;
+  color: #8b8b8b;
   text-align: left;
   font-weight: 900;
   font-size: 24px;
   width: 400px;
 }
 
-.hero__left button{
+.hero__left button {
   margin-top: 20px;
-  background-color: #18B6F0;
+  background-color: #18b6f0;
   border: none;
   border-radius: 5px;
   color: white;
@@ -38,32 +44,31 @@
   transition: 100ms;
 }
 
-
-.hero__left button:hover{
+.hero__left button:hover {
   cursor: pointer;
-  background-color: #195176;  
+  background-color: #195176;
 }
 
-.hero__right img{
+.hero__right img {
   max-width: 540px;
 }
 
 .carousel {
   height: 300px;
   width: 100%;
-  background-color: #6DCFF6;
+  background-color: #6dcff6;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.carousel__container{
+.carousel__container {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   column-gap: 10px;
 }
 
-.carousel span{
+.carousel span {
   color: white;
   font-weight: 900;
   align-self: flex-start;
@@ -71,10 +76,8 @@
   margin-bottom: 20px;
 }
 
-
-
 .carousel__item {
-  background-color: #C7EAFB;
+  background-color: #c7eafb;
   width: 200px;
   height: 200px;
   border-radius: 20px;
@@ -82,58 +85,52 @@
   cursor: pointer;
 }
 
-
-
-
-
-@media screen and (max-width: 1023px){
-  .hero{
+@media screen and (max-width: 1023px) {
+  .hero {
     height: auto;
     width: 100vw;
   }
 
-  .carousel{
+  .carousel {
     height: auto;
     padding: 20px;
   }
 
-  .carousel__item{
+  .carousel__item {
     width: auto;
     height: auto;
   }
 
-  .carousel__container{
-    grid-template-rows: 300px 300px; 
+  .carousel__container {
+    grid-template-rows: 300px 300px;
     grid-template-columns: 300px 300px;
     column-gap: 10px;
     row-gap: 15px;
   }
 }
 
-
-@media screen and (max-width: 766px){
-  .hero__right img{
+@media screen and (max-width: 766px) {
+  .hero__right img {
     max-width: 300px;
   }
   .hero__left {
     text-align: center;
   }
-  .carousel__container{
-    grid-template-rows:  none;
-    grid-template-rows:  300px 300px 300px 300px;
+  .carousel__container {
+    grid-template-rows: none;
+    grid-template-rows: 300px 300px 300px 300px;
     grid-template-columns: 300px;
     column-gap: 10px;
     row-gap: 15px;
   }
 
-  .hero__left button{
+  .hero__left button {
     width: 80%;
   }
 }
 
-
-@media screen and (max-width: 480px){
-  .hero__left h1{
+@media screen and (max-width: 480px) {
+  .hero__left h1 {
     font-size: 30px;
     text-align: center;
     width: 80%;
@@ -147,4 +144,3 @@
     margin: 0 auto;
   }
 }
-

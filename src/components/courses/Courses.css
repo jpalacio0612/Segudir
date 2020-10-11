@@ -1,4 +1,7 @@
 .courses {
+  position: absolute;
+  left: 0;
+  right: 0;
   background-color: #c7eafb;
   height: auto;
   padding-top: 40px;
