@@ -4,11 +4,15 @@ import segudirLogo from "../../assets/segudir.png";
 import defaultAvatar from "../../assets/img_avatar.png";
 import { Link, useHistory } from "react-router-dom";
 import { auth, db } from "../../firebase";
+import { useDispatch } from "react-redux";
+import { saveAuthUserReducer } from "../../redux/reducers/saveAuthUserReducer";
+import { saveAuthUserAction } from "../../redux/actions/saveAuthUserAction";
 
 export const Header = () => {
   const history = useHistory();
   const [authUser, setAuthUser] = useState();
   const [avatar, setAvatar] = useState(defaultAvatar);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -28,6 +32,7 @@ export const Header = () => {
         .then(function (doc) {
           if (doc.exists) {
             const data = doc.data();
+            dispatch(saveAuthUserAction({ ...data, isAuth: true }));
             data.picture ? setAvatar(data.picture) : setAvatar(defaultAvatar);
           } else {
             console.log("No such document!");
@@ -37,10 +42,11 @@ export const Header = () => {
           console.log("Error getting document:", error);
         });
     }
-  }, [authUser]);
+  }, [authUser, dispatch]);
 
   const logout = () => {
     auth.signOut().then(history.push("/"));
+    dispatch(saveAuthUserAction({ isAuth: false }));
   };
 
   return (

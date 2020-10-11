@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import playIcon from "../../assets/play-icon.svg";
 import likeIcon from "../../assets/like.svg";
 import dislikeIcon from "../../assets/dislike.svg";
+import lock from "../../assets/lock.svg";
 import "./Courses.css";
+import { useSelector } from "react-redux";
 
 export const Courses = () => {
+  const reduxState = useSelector(({ state }) =>
+    state ? state : { isAuth: false }
+  );
+  const [authUser, setAuthUser] = useState({ isAuth: false });
+
+  useEffect(() => {
+    console.log(reduxState);
+    setAuthUser(reduxState);
+  }, [reduxState]);
+
   return (
     <div className="courses">
       <div className="courses__grid">
         <div className="course">
           <div className="course__top">
-            <img src={playIcon} alt="play button" />
+            {authUser.isAuth ? (
+              <img src={playIcon} alt="play button" />
+            ) : (
+              <img src={lock} alt="lock icon" />
+            )}
           </div>
           <div className="course__bottom">
             <h2>Camaras termicas</h2>
@@ -30,7 +46,11 @@ export const Courses = () => {
         </div>
         <div className="course">
           <div className="course__top">
-            <img src={playIcon} alt="play button" />
+            {authUser.isAuth ? (
+              <img src={playIcon} alt="play button" />
+            ) : (
+              <img src={lock} alt="lock icon" />
+            )}
           </div>
           <div className="course__bottom">
             <h2>Camaras termicas</h2>
@@ -50,7 +70,11 @@ export const Courses = () => {
         </div>
         <div className="course">
           <div className="course__top">
-            <img src={playIcon} alt="play button" />
+            {authUser.isAuth ? (
+              <img src={playIcon} alt="play button" />
+            ) : (
+              <img src={lock} alt="lock icon" />
+            )}
           </div>
           <div className="course__bottom">
             <h2>Camaras termicas</h2>
@@ -70,7 +94,11 @@ export const Courses = () => {
         </div>
         <div className="course">
           <div className="course__top">
-            <img src={playIcon} alt="play button" />
+            {authUser.isAuth ? (
+              <img src={playIcon} alt="play button" />
+            ) : (
+              <img src={lock} alt="lock icon" />
+            )}
           </div>
           <div className="course__bottom">
             <h2>Camaras termicas</h2>
@@ -90,7 +118,11 @@ export const Courses = () => {
         </div>
         <div className="course">
           <div className="course__top">
-            <img src={playIcon} alt="play button" />
+            {authUser.isAuth ? (
+              <img src={playIcon} alt="play button" />
+            ) : (
+              <img src={lock} alt="lock icon" />
+            )}
           </div>
           <div className="course__bottom">
             <h2>Camaras termicas</h2>
@@ -110,7 +142,11 @@ export const Courses = () => {
         </div>
         <div className="course">
           <div className="course__top">
-            <img src={playIcon} alt="play button" />
+            {authUser.isAuth ? (
+              <img src={playIcon} alt="play button" />
+            ) : (
+              <img src={lock} alt="lock icon" />
+            )}
           </div>
           <div className="course__bottom">
             <h2>Camaras termicas</h2>

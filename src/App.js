@@ -7,12 +7,14 @@ import { SignUp } from "./components/SignUp/SignUp";
 import { SignIn } from "./components/SignIn/SignIn";
 import { Courses } from "./components/courses/Courses";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function App() {
   let location = useLocation();
 
   return (
-    <>
+    <Provider store={store}>
       <Header />
       <TransitionGroup>
         <CSSTransition timeout={500} classNames="fade" key={location.key}>
@@ -24,7 +26,7 @@ function App() {
           </Switch>
         </CSSTransition>
       </TransitionGroup>
-    </>
+    </Provider>
   );
 }
 
