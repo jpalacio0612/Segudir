@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
 import segudirLogo from "../../assets/segudir.png";
+import defaultAvatar from "../../assets/img_avatar.png";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 
 export const Header = () => {
   const history = useHistory();
   const [authUser, setAuthUser] = useState();
+  const [avatar, setAvatar] = useState(defaultAvatar);
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -16,6 +18,25 @@ export const Header = () => {
         setAuthUser();
       }
     });
+  }, [authUser]);
+
+  useEffect(() => {
+    if (authUser) {
+      const docRef = db.collection("students").doc(authUser.uid);
+      docRef
+        .get()
+        .then(function (doc) {
+          if (doc.exists) {
+            const data = doc.data();
+            data.picture ? setAvatar(data.picture) : setAvatar(defaultAvatar);
+          } else {
+            console.log("No such document!");
+          }
+        })
+        .catch(function (error) {
+          console.log("Error getting document:", error);
+        });
+    }
   }, [authUser]);
 
   const logout = () => {
@@ -49,17 +70,31 @@ export const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="header__sign">
-          <ul>
-            <li>
-              <Link to="/signin">Ingresar</Link>
-            </li>
-            <li>
-              <Link to="/signup">Registrate</Link>
-            </li>
-          </ul>
-          {authUser && <button onClick={logout}>Cerrar Sesión</button>}
-        </div>
+
+        {authUser ? (
+          <div className="dropdown">
+            <div className="avatar__container">
+              <img className="avatar" src={avatar} alt="avatar" />
+            </div>
+            <div className="dropdown__content">
+              <Link to="">Perfil</Link>
+              <Link onClick={logout} to="">
+                Cerrar Sesión
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="header__sign">
+            <ul>
+              <li>
+                <Link to="/signin">Ingresar</Link>
+              </li>
+              <li>
+                <Link to="/signup">Registrate</Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
