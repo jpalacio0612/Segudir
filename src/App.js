@@ -9,6 +9,7 @@ import { Courses } from "./components/courses/Courses";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
 
 function App() {
   let location = useLocation();
@@ -23,6 +24,7 @@ function App() {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/courses" component={Courses} />
+            <Route exact path="/videoplayer" component={VideoPlayer} />
           </Switch>
         </CSSTransition>
       </TransitionGroup>

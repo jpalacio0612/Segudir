@@ -93,15 +93,43 @@
   font-weight: bold;
 }
 
+.burger--dropdown {
+  position: relative;
+  display: none;
+  transition: 500ms;
+}
+
+.burger--dropdown:hover .dropdown__content {
+  transition: 500ms;
+  display: block;
+}
+
+.burger--dropdown:hover .avatar__container {
+  transition: 500ms;
+  background-color: #6dcff6;
+}
+
 @media screen and (max-width: 1023px) {
+  .header__nav ul {
+    display: none;
+  }
+
   .header__sign {
     justify-content: center;
+  }
+
+  .header__sign ul {
+    display: none;
+  }
+
+  .burger--dropdown {
+    display: inline-block;
   }
 }
 
 @media screen and (max-width: 766px) {
   .header {
-    display: block;
+    display: flex;
     height: auto;
   }
 
@@ -110,7 +138,7 @@
   }
 
   .header__nav ul {
-    display: block;
+    display: none;
   }
   .header__nav ul li {
     height: 50px;

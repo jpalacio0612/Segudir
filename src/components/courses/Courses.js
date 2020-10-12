@@ -5,16 +5,14 @@ import dislikeIcon from "../../assets/dislike.svg";
 import lock from "../../assets/lock.svg";
 import "./Courses.css";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const Courses = () => {
-  const reduxState = useSelector(({ state }) =>
-    state ? state : { isAuth: false }
-  );
   const [authUser, setAuthUser] = useState({ isAuth: false });
+  const reduxState = useSelector(({ state }) => state);
 
   useEffect(() => {
-    console.log(reduxState);
-    setAuthUser(reduxState);
+    setAuthUser(reduxState ? reduxState : { isAuth: false });
   }, [reduxState]);
 
   return (
@@ -23,7 +21,13 @@ export const Courses = () => {
         <div className="course">
           <div className="course__top">
             {authUser.isAuth ? (
-              <img src={playIcon} alt="play button" />
+              <Link to="/videoplayer">
+                <img
+                  className="course__top--playicon"
+                  src={playIcon}
+                  alt="play button"
+                />
+              </Link>
             ) : (
               <img src={lock} alt="lock icon" />
             )}

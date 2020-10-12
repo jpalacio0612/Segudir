@@ -10,6 +10,7 @@ function addNewUserToFirestore(user) {
     lastName: profile.family_name,
     email: profile.email,
     picture: profile.picture,
+    type: "student",
     createdDtm: firestore.FieldValue.serverTimestamp(),
     lastLoginTime: firestore.FieldValue.serverTimestamp(),
   };

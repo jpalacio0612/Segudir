@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Header.css";
 import segudirLogo from "../../assets/segudir.png";
 import defaultAvatar from "../../assets/img_avatar.png";
+import menuIcon from "../../assets/menu.svg";
 import { Link, useHistory } from "react-router-dom";
 import { auth, db } from "../../firebase";
 import { useDispatch } from "react-redux";
-import { saveAuthUserReducer } from "../../redux/reducers/saveAuthUserReducer";
 import { saveAuthUserAction } from "../../redux/actions/saveAuthUserAction";
 
 export const Header = () => {
@@ -84,6 +84,9 @@ export const Header = () => {
             </div>
             <div className="dropdown__content">
               <Link to="">Perfil</Link>
+              <Link to="/courses">Cursos</Link>
+              <Link to="">Precios</Link>
+              <Link to="">Blog</Link>
               <Link onClick={logout} to="">
                 Cerrar Sesión
               </Link>
@@ -99,6 +102,19 @@ export const Header = () => {
                 <Link to="/signup">Registrate</Link>
               </li>
             </ul>
+            <div className="burger--dropdown">
+              <div className="avatar__container">
+                <img className="avatar" src={menuIcon} alt="avatar" />
+              </div>
+              <div className="dropdown__content">
+                <Link to="/courses">Cursos</Link>
+                <Link to="">Precios</Link>
+                <Link to="">Blog</Link>
+                <Link to="">¿Quieres ser un mentor?</Link>
+                <Link to="/signin">Ingresar</Link>
+                <Link to="/signup">Registrarte</Link>
+              </div>
+            </div>
           </div>
         )}
       </div>

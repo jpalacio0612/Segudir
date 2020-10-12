@@ -1,0 +1,87 @@
+.videoplayer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #c7eafb;
+  height: 90vh;
+  padding: 50px 0;
+}
+
+.videoplayer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.videoplayer__player {
+  padding: 10px;
+  width: auto;
+}
+
+.videoplayer__player__description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.videoplayer__player__description h1 {
+  color: #195176;
+  margin: 0;
+}
+
+.videoplayer__player__description p {
+  color: #8b8b8b;
+  margin: 0;
+}
+
+.videoplayer__comments {
+  display: flex;
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
+  width: auto;
+  box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+}
+
+.videoplayer__comments span {
+  display: flex;
+  box-sizing: border-box;
+  width: 90%;
+  height: 47px;
+  border-radius: 5px;
+  border: 1px solid rgba(139, 139, 139, 0.5);
+  margin: 10px auto;
+  padding-left: 10px;
+}
+
+.videoplayer__comments span input {
+  border: none;
+  width: 90%;
+  height: 100%;
+  outline: none;
+  font-size: 14px;
+}
+
+.videoplayer__comments span img {
+  cursor: pointer;
+  width: 20px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1023px) {
+}
+
+@media screen and (max-width: 766px) {
+  .videoplayer {
+    height: auto;
+  }
+
+  .videoplayer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+}
+
+@media screen and (max-width: 320px) {
+}

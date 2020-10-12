@@ -28,6 +28,7 @@ export const SignUp = () => {
             name: name,
             lastName: lastname,
             email: email,
+            type: "student",
           })
           .catch((error) => {
             console.log(

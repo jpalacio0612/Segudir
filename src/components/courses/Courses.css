@@ -38,6 +38,10 @@
   width: 50px;
 }
 
+.course__top--playicon {
+  cursor: pointer;
+}
+
 .course__bottom {
   height: 50%;
   padding: 8px;
