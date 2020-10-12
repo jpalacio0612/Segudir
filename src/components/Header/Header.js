@@ -113,7 +113,9 @@ export const Header = () => {
             </ul>
             <div className="burger--dropdown">
               <div
-                className="avatar__container"
+                className={
+                  burgerHide ? "avatar__container" : "avatar__container--white"
+                }
                 onMouseEnter={() => setBurgerHide(true)}
               >
                 <img className="avatar" src={menuIcon} alt="avatar" />

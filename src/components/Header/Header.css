@@ -216,3 +216,13 @@
 .dropdown__content--hide {
   display: none;
 }
+
+.avatar__container--white {
+  height: 70px;
+  display: flex;
+  width: 70px;
+  align-items: center;
+  justify-content: center;
+  transition: 500ms;
+  background-color: white;
+}
