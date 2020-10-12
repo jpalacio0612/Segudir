@@ -170,7 +170,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  transition: 500ms;
+  transition: 100ms;
 }
 
 .dropdown {
@@ -209,6 +209,10 @@
 }
 
 .dropdown:hover .avatar__container {
-  transition: 500ms;
+  transition: 100ms;
   background-color: #6dcff6;
+}
+
+.dropdown__content--hide {
+  display: none;
 }

@@ -12,6 +12,7 @@ export const Header = () => {
   const history = useHistory();
   const [authUser, setAuthUser] = useState();
   const [avatar, setAvatar] = useState(defaultAvatar);
+  const [burgerHide, setBurgerHide] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -79,10 +80,18 @@ export const Header = () => {
 
         {authUser ? (
           <div className="dropdown">
-            <div className="avatar__container">
+            <div
+              className="avatar__container"
+              onMouseEnter={() => setBurgerHide(true)}
+            >
               <img className="avatar" src={avatar} alt="avatar" />
             </div>
-            <div className="dropdown__content">
+            <div
+              className={
+                burgerHide ? "dropdown__content" : "dropdown__content--hide"
+              }
+              onClick={() => setBurgerHide(false)}
+            >
               <Link to="">Perfil</Link>
               <Link to="/courses">Cursos</Link>
               <Link to="">Precios</Link>
@@ -103,10 +112,18 @@ export const Header = () => {
               </li>
             </ul>
             <div className="burger--dropdown">
-              <div className="avatar__container">
+              <div
+                className="avatar__container"
+                onMouseEnter={() => setBurgerHide(true)}
+              >
                 <img className="avatar" src={menuIcon} alt="avatar" />
               </div>
-              <div className="dropdown__content">
+              <div
+                onClick={() => setBurgerHide(false)}
+                className={
+                  burgerHide ? "dropdown__content" : "dropdown__content--hide"
+                }
+              >
                 <Link to="/courses">Cursos</Link>
                 <Link to="">Precios</Link>
                 <Link to="">Blog</Link>
