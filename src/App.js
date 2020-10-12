@@ -21,7 +21,7 @@ function App() {
         <CSSTransition timeout={500} classNames="fade" key={location.key}>
           <Switch location={location}>
             <Route exact path="/" component={Home} />
-            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/signup/:type" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/courses" component={Courses} />
             <Route exact path="/videoplayer" component={VideoPlayer} />

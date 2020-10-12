@@ -27,16 +27,27 @@ export const Header = () => {
 
   useEffect(() => {
     if (authUser) {
-      const docRef = db.collection("students").doc(authUser.uid);
+      let docRef = db.collection("students").doc(authUser.uid);
       docRef
         .get()
-        .then(function (doc) {
+        .then((doc) => {
           if (doc.exists) {
             const data = doc.data();
             dispatch(saveAuthUserAction({ ...data, isAuth: true }));
             data.picture ? setAvatar(data.picture) : setAvatar(defaultAvatar);
           } else {
-            console.log("No such document!");
+            docRef = db.collection("mentors").doc(authUser.uid);
+            docRef.get().then((doc) => {
+              if (doc.exists) {
+                const data = doc.data();
+                dispatch(saveAuthUserAction({ ...data, isAuth: true }));
+                data.picture
+                  ? setAvatar(data.picture)
+                  : setAvatar(defaultAvatar);
+              } else {
+                console.log("Document not found");
+              }
+            });
           }
         })
         .catch(function (error) {
@@ -74,7 +85,7 @@ export const Header = () => {
               <Link to="/">Blog</Link>
             </li>
             <li>
-              <Link to="/">¿Quieres ser un mentor?</Link>
+              <Link to="/signup/mentor">¿Quieres ser un mentor?</Link>
             </li>
           </ul>
         </div>
@@ -112,7 +123,7 @@ export const Header = () => {
                 <Link to="/signin">Ingresar</Link>
               </li>
               <li>
-                <Link to="/signup">Registrate</Link>
+                <Link to="/signup/student">Registrate</Link>
               </li>
             </ul>
             <div className="burger--dropdown">
@@ -134,7 +145,7 @@ export const Header = () => {
                 <Link to="/courses">Cursos</Link>
                 <Link to="">Precios</Link>
                 <Link to="">Blog</Link>
-                <Link to="">¿Quieres ser un mentor?</Link>
+                <Link to="/signup/mentor">¿Quieres ser un mentor?</Link>
                 <Link to="/signin">Ingresar</Link>
                 <Link to="/signup">Registrarte</Link>
               </div>

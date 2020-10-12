@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import googleLogo from "../../assets/google_logo.png";
 import { auth, db } from "../../firebase";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Modal } from "../Modal/Modal";
 import succesfull from "../../assets/successful.gif";
@@ -12,6 +12,8 @@ export const SignUp = () => {
   const { register, handleSubmit, errors, watch } = useForm();
   const [modelToggle, setModelToggle] = useState(false);
   const history = useHistory();
+  let { type } = useParams();
+  console.log(type);
 
   const handleClose = () => {
     setModelToggle(false);
@@ -22,13 +24,13 @@ export const SignUp = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        db.collection("students")
+        db.collection(`${type}s`)
           .doc(auth.currentUser.uid)
           .set({
             name: name,
             lastName: lastname,
             email: email,
-            type: "student",
+            type: `${type}`,
           })
           .catch((error) => {
             console.log(
@@ -44,7 +46,11 @@ export const SignUp = () => {
   return (
     <div className="signup">
       <div className="signup__form">
-        <h3>Crea tu cuenta</h3>
+        {type === "student" ? (
+          <h3>Crea tu cuenta</h3>
+        ) : (
+          <h3>Empieza a enseñar</h3>
+        )}
         <form onSubmit={handleSubmit(signUp)}>
           <input
             name="name"
@@ -86,7 +92,7 @@ export const SignUp = () => {
           <button>Registrarse</button>
         </form>
         <div className="signup__google">
-          <button onClick={() => googleSign(history)}>
+          <button onClick={() => googleSign(history, type)}>
             Registrate con <img src={googleLogo} alt="logo de google" />
           </button>
         </div>
