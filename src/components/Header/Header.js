@@ -48,6 +48,7 @@ export const Header = () => {
   const logout = () => {
     auth.signOut().then(history.push("/"));
     dispatch(saveAuthUserAction({ isAuth: false }));
+    setBurgerHide(true);
   };
 
   return (
@@ -81,8 +82,11 @@ export const Header = () => {
         {authUser ? (
           <div className="dropdown">
             <div
-              className="avatar__container"
+              className={
+                burgerHide ? "avatar__container" : "avatar__container--white"
+              }
               onMouseEnter={() => setBurgerHide(true)}
+              onClick={() => setBurgerHide(true)}
             >
               <img className="avatar" src={avatar} alt="avatar" />
             </div>
@@ -117,6 +121,7 @@ export const Header = () => {
                   burgerHide ? "avatar__container" : "avatar__container--white"
                 }
                 onMouseEnter={() => setBurgerHide(true)}
+                onClick={() => setBurgerHide(true)}
               >
                 <img className="avatar" src={menuIcon} alt="avatar" />
               </div>
