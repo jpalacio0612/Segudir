@@ -31,6 +31,7 @@ export const UploadVideo = () => {
 
   const handleSubmit = async (e) => {
     const authUser = reduxState;
+    console.log("ser", authUser);
     let urlImage = "";
     e.preventDefault();
     let uploadTask = storage
@@ -84,6 +85,7 @@ export const UploadVideo = () => {
               imageUrl: urlImage,
               videoUrl: url,
               mentorId: authUser.id,
+              mentorName: `${authUser.name} ${authUser.lastName}`,
               title: title,
               description: description,
             });

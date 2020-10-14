@@ -7,9 +7,10 @@ import dislikeIcon from "../../assets/dislike.svg";
 import sendIcon from "../../assets/send-icon.svg";
 import { useSelector } from "react-redux";
 
-export const VideoPlayer = () => {
+export const VideoPlayer = ({ location: { course } }) => {
   const [authUser, setAuthUser] = useState({ isAuth: false });
   const reduxState = useSelector(({ state }) => state);
+  console.log(course);
 
   useEffect(() => {
     setAuthUser(reduxState ? reduxState : { isAuth: false });
@@ -17,16 +18,16 @@ export const VideoPlayer = () => {
 
   return (
     <div className="videoplayer">
-      {authUser.isAuth && (
+      {authUser.isAuth && course && (
         <div className="videoplayer__grid">
           <div className="videoplayer__player">
             <Player>
-              <source src="https://firebasestorage.googleapis.com/v0/b/segudir.appspot.com/o/camara%20termica.mp4?alt=media&token=764520cb-1022-449e-91eb-72700d0aa265" />
+              <source src={course.videoUrl} />
             </Player>
             <div className="videoplayer__player__description">
               <div>
-                <h1>Camaras Termicas</h1>
-                <p>Por Jonathan Palacio</p>
+                <h1>{course.title}</h1>
+                <p>{`Por ${course.mentorName}`}</p>
               </div>
               <div className="course__bottom--rating">
                 <img src={likeIcon} alt="like icon" />
