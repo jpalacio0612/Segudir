@@ -40,7 +40,13 @@ export const Header = () => {
             docRef.get().then((doc) => {
               if (doc.exists) {
                 const data = doc.data();
-                dispatch(saveAuthUserAction({ ...data, isAuth: true }));
+                dispatch(
+                  saveAuthUserAction({
+                    ...data,
+                    isAuth: true,
+                    id: authUser.uid,
+                  })
+                );
                 data.picture
                   ? setAvatar(data.picture)
                   : setAvatar(defaultAvatar);
@@ -107,7 +113,7 @@ export const Header = () => {
               }
               onClick={() => setBurgerHide(false)}
             >
-              <Link to="">Perfil</Link>
+              <Link to="/profile">Perfil</Link>
               <Link to="/courses">Cursos</Link>
               <Link to="">Precios</Link>
               <Link to="">Blog</Link>

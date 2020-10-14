@@ -107,8 +107,10 @@
 }
 
 .signup__succesfull {
+  margin: 0 auto;
   display: flex;
   padding: 20px;
+  max-width: 500px;
   flex-direction: column;
   justify-content: center;
   background-color: white;

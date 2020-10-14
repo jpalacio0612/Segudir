@@ -6,10 +6,10 @@ function addNewUserToFirestore(user, type) {
   const collection = db.collection(`${type}s`);
   const { profile } = user.additionalUserInfo;
   const details = {
-    name: profile.given_name,
-    lastName: profile.family_name,
-    email: profile.email,
-    picture: profile.picture,
+    name: profile.given_name || "",
+    lastName: profile.family_name || "",
+    email: profile.email || "",
+    picture: profile.picture || "",
     type: `${type}`,
     createdDtm: firestore.FieldValue.serverTimestamp(),
     lastLoginTime: firestore.FieldValue.serverTimestamp(),

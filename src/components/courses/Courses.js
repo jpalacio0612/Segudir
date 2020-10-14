@@ -20,6 +20,11 @@ export const Courses = () => {
       <div className="courses__grid">
         <div className="course">
           <div className="course__top">
+            <img
+              src="https://www.gndiario.com/sites/default/files/styles/noticia_detalle_noticia_2_1/public/noticias/camara%20t%C3%A9rmica.jpg?itok=DHU9lxKq"
+              className="course__top--miniature"
+              alt="Miniatura"
+            />
             {authUser.isAuth ? (
               <Link to="/videoplayer">
                 <img
@@ -29,7 +34,11 @@ export const Courses = () => {
                 />
               </Link>
             ) : (
-              <img src={lock} alt="lock icon" />
+              <img
+                className="course__top--lockicon"
+                src={lock}
+                alt="lock icon"
+              />
             )}
           </div>
           <div className="course__bottom">
