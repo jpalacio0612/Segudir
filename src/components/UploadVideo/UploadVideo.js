@@ -3,6 +3,7 @@ import "./UploadVideo.css";
 import playIcon from "../../assets/play-icon.svg";
 import likeIcon from "../../assets/like.svg";
 import dislikeIcon from "../../assets/dislike.svg";
+import uploadIcon from "../../assets/upload.png";
 import { db, storage } from "../../firebase";
 import firebase from "firebase";
 import { useSelector } from "react-redux";
@@ -12,7 +13,7 @@ export const UploadVideo = () => {
   const [title, setTitle] = useState("Titulo");
   const [description, setDescription] = useState("Descripcion");
   const [miniature, setMiniature] = useState("");
-  const [video, setVideo] = useState();
+  const [video, setVideo] = useState("");
   const [progress, setProgress] = useState(0);
   const [image, setImage] = useState("");
 
@@ -120,30 +121,51 @@ export const UploadVideo = () => {
       </div>
       <form onSubmit={handleSubmit}>
         <input
+          className="simple__input"
           placeholder="Titulo"
           onChange={(e) => setTitle(e.target.value)}
           required={true}
         />
         <input
+          className="simple__input"
           placeholder="Descripción"
           onChange={(e) => setDescription(e.target.value)}
           required={true}
         />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={imageHandleChange}
-          required={true}
+        <div class="upload-btn-wrapper">
+          <p>{image.name}</p>
+          <span>
+            Miniatura <img src={uploadIcon} alt="upload" />
+          </span>
+          <input
+            accept="image/*"
+            onChange={imageHandleChange}
+            required={true}
+            type="file"
+            name="myfile"
+          />
+        </div>
+        <div class="upload-btn-wrapper">
+          <p>{video.name}</p>
+          <span>
+            Video <img src={uploadIcon} alt="upload" />
+          </span>
+          <input
+            accept="video/*"
+            onChange={videoHandleChange}
+            required={true}
+            type="file"
+            name="myfile"
+          />
+        </div>
+        <progress
+          className="imageupload__progress"
+          value={progress}
+          max="100"
         />
-        <input
-          type="file"
-          accept="video/*"
-          required={true}
-          onChange={videoHandleChange}
-        />
+
         <button>Subir video</button>
       </form>
-      <progress className="imageupload__progress" value={progress} max="100" />
     </div>
   );
 };
