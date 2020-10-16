@@ -153,7 +153,7 @@ export const Header = () => {
                 <Link to="">Blog</Link>
                 <Link to="/signup/mentor">¿Quieres ser un mentor?</Link>
                 <Link to="/signin">Ingresar</Link>
-                <Link to="/signup">Registrarte</Link>
+                <Link to="/signup/student">Registrarte</Link>
               </div>
             </div>
           </div>

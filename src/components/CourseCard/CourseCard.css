@@ -1,0 +1,70 @@
+.course {
+  margin: 10px auto;
+  width: 240px;
+  height: 280px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+}
+
+.course__top {
+  height: 50%;
+  border-radius: 10px 10px 0px 0px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.course__top--miniature {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.course__top--lockicon {
+  position: absolute;
+  width: 50px;
+}
+
+.course__top--playicon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+  width: 50px;
+}
+
+.course__bottom {
+  height: 50%;
+  padding: 8px;
+}
+
+.course__bottom h2 {
+  font-size: 20px;
+  color: #195176;
+  margin: 0;
+}
+
+.course__bottom p {
+  word-break: break-all;
+  overflow: hidden;
+  height: 60px;
+  margin: 10px 0;
+  font-size: 10px;
+  color: #5b6b73;
+}
+
+.course__bottom--rating {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.course__bottom--rating img {
+  width: 20px;
+  margin-left: 14px;
+  margin-right: 5px;
+}

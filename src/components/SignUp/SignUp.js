@@ -4,19 +4,18 @@ import googleLogo from "../../assets/google_logo.png";
 import { auth, db } from "../../firebase";
 import { useHistory, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Modal } from "../Modal/Modal";
 import succesfull from "../../assets/successful.gif";
 import { googleSign } from "../../utils/firebaseAPI";
+import Modal from "@material-ui/core/Modal";
 
 export const SignUp = () => {
   const { register, handleSubmit, errors, watch } = useForm();
-  const [modelToggle, setModelToggle] = useState(false);
   const history = useHistory();
   let { type } = useParams();
-  console.log(type);
+  const [open, setOpen] = useState(false);
 
   const handleClose = () => {
-    setModelToggle(false);
+    setOpen(false);
     history.push("/");
   };
 
@@ -38,7 +37,7 @@ export const SignUp = () => {
               error
             );
           });
-        setModelToggle(true);
+        setOpen(true);
       })
       .catch((error) => alert(error.message));
   };
@@ -97,7 +96,12 @@ export const SignUp = () => {
           </button>
         </div>
       </div>
-      <Modal show={modelToggle} modalClosed={handleClose}>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
         <div className="signup__succesfull">
           <img src={succesfull} alt="succesfull" />
           <h2>Registro Exitoso</h2>

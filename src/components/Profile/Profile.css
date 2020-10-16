@@ -118,3 +118,68 @@
     "selector content"
     "notification content";
 }
+
+.mycourses {
+  align-self: normal;
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.mycourses__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.upload__button {
+  margin-top: 80px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: #18b6f0;
+  border: none;
+  color: white;
+  width: 50%;
+  height: 30px;
+  padding-left: 10px;
+  outline: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 500ms;
+}
+
+.profile__courses {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1439px) {
+  .profile__grid {
+    width: 90%;
+  }
+  .mycourses__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .mycourses__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .profile__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "selector"
+      "notification"
+      "content";
+  }
+}
+
+@media screen and (max-width: 480px) {
+}
+
+@media screen and (max-width: 320px) {
+}

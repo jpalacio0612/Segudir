@@ -8,14 +8,15 @@ import { db, storage } from "../../firebase";
 import firebase from "firebase";
 import { useSelector } from "react-redux";
 
-export const UploadVideo = () => {
+export const UploadVideo = ({ modalClosed }) => {
   const reduxState = useSelector(({ state }) => state);
-  const [title, setTitle] = useState("Titulo");
-  const [description, setDescription] = useState("Descripcion");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [miniature, setMiniature] = useState("");
   const [video, setVideo] = useState("");
   const [progress, setProgress] = useState(0);
   const [image, setImage] = useState("");
+  const [upload, setUpload] = useState(false);
 
   const imageHandleChange = (event) => {
     if (event.target.files[0]) {
@@ -31,6 +32,7 @@ export const UploadVideo = () => {
   };
 
   const handleSubmit = async (e) => {
+    setUpload(true);
     const authUser = reduxState;
     console.log("ser", authUser);
     let urlImage = "";
@@ -40,12 +42,7 @@ export const UploadVideo = () => {
       .put(image);
     await uploadTask.on(
       "state_changed",
-      (snapshot) => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(progress);
-      },
+      (snapshot) => {},
       (error) => {
         console.log(error);
       },
@@ -56,8 +53,6 @@ export const UploadVideo = () => {
           .getDownloadURL()
           .then((url) => {
             urlImage = url;
-            setProgress(0);
-            setImage(null);
           });
       }
     );
@@ -90,8 +85,14 @@ export const UploadVideo = () => {
               title: title,
               description: description,
             });
+            setImage("");
+            setVideo("");
+            setTitle("");
+            setDescription("");
+            setMiniature("");
             setProgress(0);
-            setVideo(null);
+            setUpload(false);
+            modalClosed();
           });
       }
     );
@@ -123,16 +124,18 @@ export const UploadVideo = () => {
         <input
           className="simple__input"
           placeholder="Titulo"
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
           required={true}
         />
         <input
           className="simple__input"
           placeholder="Descripción"
+          value={description}
           onChange={(e) => setDescription(e.target.value)}
           required={true}
         />
-        <div class="upload-btn-wrapper">
+        <div className="upload-btn-wrapper">
           <p>{image.name}</p>
           <span>
             Miniatura <img src={uploadIcon} alt="upload" />
@@ -145,7 +148,7 @@ export const UploadVideo = () => {
             name="myfile"
           />
         </div>
-        <div class="upload-btn-wrapper">
+        <div className="upload-btn-wrapper">
           <p>{video.name}</p>
           <span>
             Video <img src={uploadIcon} alt="upload" />
@@ -164,7 +167,7 @@ export const UploadVideo = () => {
           max="100"
         />
 
-        <button>Subir video</button>
+        <button disabled={upload}>Subir video</button>
       </form>
     </div>
   );
