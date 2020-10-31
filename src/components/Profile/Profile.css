@@ -53,6 +53,41 @@
   font-weight: bold;
 }
 
+.notification {
+  text-decoration: none;
+  border-bottom: 1px solid grey;
+  transition: 500ms;
+}
+
+.notification:hover {
+  background-color: #c7eafb;
+  cursor: pointer;
+}
+
+.notification h3 {
+  color: #6dcff6;
+  font-size: 16px;
+  text-align: left;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.notification h4 {
+  color: #195176;
+  font-size: 14px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.notification p {
+  color: gray;
+  font-size: 12px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
 .profile__content {
   grid-area: content;
   width: auto;

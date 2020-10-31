@@ -23,6 +23,12 @@
 
 .course__top--lockicon {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
   width: 50px;
 }
 

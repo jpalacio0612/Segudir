@@ -6,19 +6,45 @@ import likeIcon from "../../assets/like.svg";
 import dislikeIcon from "../../assets/dislike.svg";
 import sendIcon from "../../assets/send-icon.svg";
 import { useSelector } from "react-redux";
+import { db } from "../../firebase";
+import firebase from "firebase";
 
 export const VideoPlayer = ({ location: { course } }) => {
-  const [authUser, setAuthUser] = useState({ isAuth: false });
-  const reduxState = useSelector(({ state }) => state);
+  const reduxState = useSelector(({ state }) => state || {});
+  const [comments, setComments] = useState([]);
+  const [comment, setComment] = useState("");
   console.log(course);
 
   useEffect(() => {
-    setAuthUser(reduxState ? reduxState : { isAuth: false });
-  }, [reduxState]);
+    let unsubscribe = () => {};
+    if (course["mediaId"]) {
+      console.log("exits");
+      unsubscribe = db
+        .collection("media")
+        .doc(course["mediaId"])
+        .collection("comments")
+        .orderBy("timestamp", "desc")
+        .onSnapshot((snapshot) => {
+          setComments(snapshot.docs.map((doc) => doc.data()));
+        });
+    }
+    return () => {
+      unsubscribe();
+    };
+  }, [course]);
+
+  const postComment = () => {
+    db.collection("media").doc(course["mediaId"]).collection("comments").add({
+      text: comment,
+      username: reduxState["name"],
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setComment("");
+  };
 
   return (
     <div className="videoplayer">
-      {authUser.isAuth && course && (
+      {reduxState["isAuth"] && course && (
         <div className="videoplayer__grid">
           <div className="videoplayer__player">
             <Player>
@@ -39,9 +65,17 @@ export const VideoPlayer = ({ location: { course } }) => {
           </div>
           <div className="videoplayer__comments">
             <span>
-              <input placeholder="Escribe aqui tu comentario..." />
-              <img src={sendIcon} alt="send icon" />
+              <input
+                placeholder="Escribe aqui tu comentario..."
+                onChange={(e) => setComment(e.target.value)}
+              />
+              <img src={sendIcon} alt="send icon" onClick={postComment} />
             </span>
+            {comments.map((comment) => (
+              <p>
+                <strong>{comment.username}</strong> {comment.text}
+              </p>
+            ))}
           </div>
         </div>
       )}

@@ -11,28 +11,25 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
 import { Profile } from "./components/Profile/Profile";
-import { ModalProvider } from "styled-react-modal";
 
 function App() {
   let location = useLocation();
 
   return (
     <Provider store={store}>
-      <ModalProvider>
-        <Header />
-        <TransitionGroup>
-          <CSSTransition timeout={500} classNames="fade" key={location.key}>
-            <Switch location={location}>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/signup/:type" component={SignUp} />
-              <Route exact path="/signin" component={SignIn} />
-              <Route exact path="/courses" component={Courses} />
-              <Route exact path="/videoplayer" component={VideoPlayer} />
-              <Route exact path="/profile" component={Profile} />
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
-      </ModalProvider>
+      <Header />
+      <TransitionGroup>
+        <CSSTransition timeout={500} classNames="fade" key={location.key}>
+          <Switch location={location}>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/signup/:type" component={SignUp} />
+            <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/courses" component={Courses} />
+            <Route exact path="/videoplayer" component={VideoPlayer} />
+            <Route exact path="/profile" component={Profile} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </Provider>
   );
 }

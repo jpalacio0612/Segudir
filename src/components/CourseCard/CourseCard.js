@@ -9,7 +9,7 @@ import "./CourseCard.css";
 export const CourseCard = ({ course, authUser }) => {
   return (
     <div>
-      <div className="course" key={course.mediaId}>
+      <div className="course">
         <div className="course__top">
           <img
             src={course.imageUrl}

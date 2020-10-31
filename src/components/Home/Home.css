@@ -5,7 +5,7 @@
 }
 
 .hero {
-  height: 391px;
+  height: 345px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -68,14 +68,6 @@
   column-gap: 10px;
 }
 
-.carousel span {
-  color: white;
-  font-weight: 900;
-  align-self: flex-start;
-  margin-left: 100px;
-  margin-bottom: 20px;
-}
-
 .carousel__item {
   background-color: #c7eafb;
   width: 200px;
@@ -83,6 +75,14 @@
   border-radius: 20px;
   display: inline-block;
   cursor: pointer;
+}
+
+.lastCourses__title {
+  margin: 0;
+  padding-top: 10px;
+  text-align: center;
+  background-color: #6dcff6;
+  color: white;
 }
 
 @media screen and (max-width: 1023px) {

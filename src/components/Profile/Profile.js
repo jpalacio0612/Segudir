@@ -7,12 +7,14 @@ import { UploadVideo } from "../UploadVideo/UploadVideo";
 import { db } from "../../firebase";
 import { CourseCard } from "../CourseCard/CourseCard";
 import Modal from "@material-ui/core/Modal";
+import { Link } from "react-router-dom";
 
 export const Profile = () => {
   const [tag, setTag] = useState("profile");
   const [media, setMedia] = useState([]);
   const authUser = useSelector(({ state }) => state);
   const [open, setOpen] = useState(false);
+  const [notifications, setNotifications] = useState();
 
   const handleClose = () => {
     setOpen(false);
@@ -32,6 +34,41 @@ export const Profile = () => {
         })
         .catch((error) => console.log(error));
       setMedia(mediaArray);
+    }
+  }, [authUser]);
+
+  useEffect(() => {
+    if (authUser) {
+      const notificationArray = [];
+      db.collection("media")
+        .orderBy("timestamp", "desc")
+        .where("mentorId", "==", authUser["id"] || "")
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            let comment = doc.data();
+            const mediaId = doc.id;
+            console.log(mediaId);
+            let unsubscribe = db
+              .collection("media")
+              .doc(doc.id)
+              .collection("comments")
+              .orderBy("timestamp", "desc")
+              .onSnapshot((snapshot) => {
+                snapshot.docs.map((doc) => {
+                  console.log(comment);
+                  notificationArray.push({
+                    ...doc.data(),
+                    title: comment.title,
+                    mediaId: mediaId,
+                    ...comment,
+                  });
+                });
+                setNotifications(notificationArray);
+              });
+          });
+        })
+        .catch((error) => console.log(error));
     }
   }, [authUser]);
 
@@ -59,6 +96,19 @@ export const Profile = () => {
           </div>
           <div className="profile__notification">
             <span>Notificaciones</span>
+            {notifications &&
+              notifications.map((notification) => (
+                <Link
+                  to={{ pathname: "/videoplayer", course: notification }}
+                  className="notification"
+                >
+                  <div className="notification">
+                    <h3>{notification.title}</h3>
+                    <h4>{notification["username"]}</h4>
+                    <p>{notification["text"]}</p>
+                  </div>
+                </Link>
+              ))}
           </div>
           <div className="profile__content">
             <div className="profile__content--top">
@@ -97,7 +147,11 @@ export const Profile = () => {
                 <div className="mycourses">
                   <div className="mycourses__grid">
                     {media.map((course) => (
-                      <CourseCard course={course} authUser={authUser} />
+                      <CourseCard
+                        course={course}
+                        authUser={authUser}
+                        key={course.mediaId}
+                      />
                     ))}
                   </div>
                 </div>
